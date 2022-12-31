@@ -1,5 +1,6 @@
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 
 class Main {
   public static void main(String[] args) {
@@ -7,23 +8,32 @@ class Main {
 
       // Creates a FileInputStream
       FileInputStream file = new FileInputStream("abc.txt");
+      FileWriter writer = new FileWriter("a.txt");
 
       // Creates a BufferedInputStream
       BufferedInputStream input = new BufferedInputStream(file);
 
       // Reads first byte from file
       int i = input .read();
+      int U;
 
       while (i != -1) {
-        System.out.print((char) i);
+
+        U=Character.toUpperCase(i); 
+               writer.write(U);
+       
+        System.out.print((char) U);
 
         // Reads next byte from the file
         i = input.read();
+        // System.out.print((char) i);
       }
+      writer.close(); 
       input.close();
     }
 
-    catch (Exception e) {
+    catch (Exception e) 
+    {
       e.getStackTrace();
     }
   }
